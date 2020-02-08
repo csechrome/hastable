@@ -45,6 +45,8 @@ tbody tr:nth-child(2n+1) {
 	background: rgb(39, 102, 86);
 }
 
+
+
 .left_arrow {
     border: solid black;
     border-width: 0 6px 6px 0;

@@ -15,7 +15,7 @@ function setSub(block_id, block_html) {
     obj.innerHTML = block_html;
 }
 
-window.onkeydown = function() {
+/*window.onkeydown = function() {
     if (event.keyCode == '37') {
         if(nowtable != 0) {
             displayTable(--nowtable);
@@ -28,7 +28,7 @@ window.onkeydown = function() {
             this.setSub("nownum", nowtable+1);
         }
     }
-}
+}*/
 
 /** USE PARSING TOOL **/
 var sheetNum = [9, 11, 9, 8, 9, 9, 3, 5, 7, 2, 4, 4, 4];
