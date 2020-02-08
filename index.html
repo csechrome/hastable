@@ -1,24 +1,18 @@
 <html lang="ko">
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="http://csechrome.github.io/hastable/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="http://csechrome.github.io/hastable/favicon.ico" type="image/x-icon" />
     <title>하나고등학교 시간표 도우미</title>
 </head>
 
 <body>
-    <input type="button" id="hw" value="Hello world" />
+    <input type="button" id="gen" value="Generate Button" />
     <script type="text/javascript" src="TableFinder9.js"></script>
     
     <link rel="stylesheet" href="style.css">
     
-    <h2 align="center">
-        <span class="left_arrow"></span>
-        시간표 (1 / 138)
-        <span class="right_arrow"></span>
-    </h2>
+    <h2 align="center"> 시간표 (<span id="nownum">1</span> / <span id="tablenum">none</span>) </h2>
 
-    <table>
+    <table id="table" style.display='none'>
         <thead>
             <tr>
                 <th>MON</th>

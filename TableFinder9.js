@@ -1,8 +1,9 @@
-var hw = document.getElementById('hw');
-hw.addEventListener('click', function(){
-    var n = search(0) + 1;
-    alert(n);
-    setSub("mon2", "asdf");
+var gen = document.getElementById('gen');
+var nowtable = 0;
+gen.addEventListener('click', function(){
+    var n = search(0);
+    setSub("tablenum", n);
+    displayTable(nowtable);
 })
 
 function setSub(block_id, block_html) {
@@ -14,9 +15,24 @@ function setSub(block_id, block_html) {
     obj.innerHTML = block_html;
 }
 
+window.onkeydown = function() {
+    if (event.keyCode == '37') {
+        if(nowtable != 0) {
+            displayTable(--nowtable);
+            this.setSub("nownum", nowtable+1);
+        }
+    }
+    else if (event.keyCode == '39') {
+        if(nowtable != n - 1) {
+            displayTable(++nowtable);
+            this.setSub("nownum", nowtable+1);
+        }
+    }
+}
+
 /** USE PARSING TOOL **/
 var sheetNum = [9, 11, 9, 8, 9, 9, 3, 5, 7, 2, 4, 4, 4];
-var arr =
+var sorted =
 [["공연실습","화학","AP물리학C:전자기학","미적분학","심화수학","심화영어독해","화법과작문","AP화학","수학"],
 ["중국언어와문화","물리학","AP통계학","AP세계사","AP거시경제","미적분학","심화수학","심화미분적분학","화법과작문","AP생물학","심화수학"],
 ["지구과학","영미문학","AP세계사","AP물리학C:전자기학","수학","수학","심화영어독해","AP화학","고전읽기"],
@@ -35,12 +51,11 @@ var n = 0;
 var subchk = Array(9).fill(false);
 var timechk = Array(13).fill(false);
 var tempTable = Array.from(Array(7), () => Array());
-var sorted = Array.from(Array(13), () => Array());
-var allTable = Array(1000); // [7][5]
-var sub = Array(9);
+var allTable = Array(500);
+//var sub = Array(9);
+var sub = ["운동과건강", "AP컴퓨터과학A", "생활과윤리", "미적분학", "심화수학", "AP물리학C:전자기학", "생명과학", "고전읽기", "심화영어독해"];
 
 function search(idx) {		// DFS Search
-    console.log(idx);
 
     if (idx == 9) {
         tempTable[6][2] = "창체"; // WED7 Always NULL
@@ -56,7 +71,7 @@ function search(idx) {		// DFS Search
                 return 0;
             }
         }
-
+        
         allTable[n] = Array.from(Array(7), () => Array());
         for (var i = 0; i < 7; i++) {
             for (var j = 0; j < 5; j++) {
@@ -187,5 +202,14 @@ function set(time, subName) {
         tempTable[2][4] = subName;
         tempTable[3][4] = subName;
         break;
+    }
+}
+
+function displayTable(idx) {
+    var day = ["mon", "tue", "wed", "thu", "fri"];
+    for (var i = 0; i < 7; i++) {
+        for (var j = 0; j < 5; j++) {
+            setSub(day[j]+String(i+1), allTable[idx][i][j]);
+        }
     }
 }
