@@ -1,1 +1,1 @@
-# hastable
+## Timetable Generator for HAS
