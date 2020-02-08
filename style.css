@@ -25,6 +25,26 @@ tbody tr:nth-child(2n+1) {
     background-color: #cacaca;
 }
 
+#gen{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 2px solid green;
+    background-color: rgba(0,0,0,0);
+    color: green;
+    padding: 15px 30px;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	padding: 70px 0;
+	text-align: center;
+	color: rgb(255, 255, 255);
+	background: rgb(39, 102, 86);
+}
+
 .left_arrow {
     border: solid black;
     border-width: 0 6px 6px 0;
@@ -42,3 +62,4 @@ tbody tr:nth-child(2n+1) {
 	transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
+
