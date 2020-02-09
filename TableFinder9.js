@@ -1,10 +1,10 @@
-var gen = document.getElementById('gen');
 var nowtable = 0;
-gen.addEventListener('click', function(){
+window.onload = function() {
     var n = search(0);
+    setSub("loading", "");
     setSub("tablenum", n);
     displayTable(nowtable);
-})
+}
 
 function setSub(block_id, block_html) {
     obj = document.getElementById(block_id);
