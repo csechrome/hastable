@@ -1,7 +1,8 @@
 var nowtable = 0;
 window.onload = function() {
-    var selected_sub = request.getParameter("selected_sub");
-    sub = selected_sub.split(",");
+    var str = decodeURI(location.search.substr(1, location.search.length));
+    sub = str.split(',');
+    history.replaceState({}, null, location.pathname);
     var n = search(0);
     setSub("loading", "");
     setSub("tablenum", n);
