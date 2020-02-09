@@ -1,5 +1,7 @@
 var nowtable = 0;
 window.onload = function() {
+    var selected_sub = request.getParameter("selected_sub");
+    sub = selected_sub.split(",");
     var n = search(0);
     setSub("loading", "");
     setSub("tablenum", n);
@@ -16,13 +18,13 @@ function setSub(block_id, block_html) {
 }
 
 window.onkeydown = function() {
-    if (event.keyCode == '37') {
+    if (event.keyCode == '37' || event.keyCode == '40') {
         if(nowtable != 0) {
             displayTable(--nowtable);
             this.setSub("nownum", nowtable+1);
         }
     }
-    else if (event.keyCode == '39') {
+    else if (event.keyCode == '39' || event.keyCode == '38') {
         if(nowtable != n - 1) {
             displayTable(++nowtable);
             this.setSub("nownum", nowtable+1);
@@ -52,8 +54,7 @@ var subchk = Array(9).fill(false);
 var timechk = Array(13).fill(false);
 var tempTable = Array.from(Array(7), () => Array());
 var allTable = Array(500);
-//var sub = Array(9);
-var sub = ["운동과건강", "AP컴퓨터과학A", "생활과윤리", "미적분학", "심화수학", "AP물리학C:전자기학", "생명과학", "고전읽기", "심화영어독해"];
+var sub = Array(9);
 
 function search(idx) {		// DFS Search
 
