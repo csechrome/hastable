@@ -73,7 +73,13 @@
             if (n != 9) {
                 alert("9개 과목을 모두 선택해주세요");
             }
+            if(true){
+
+            }
             else {
+                form.selected_sub = selected_sub;
+                form.method = "POST";
+                form.action = "/hastable/TableFinder9.js";
                 location.href="/hastable/display.html";
             }
         }
