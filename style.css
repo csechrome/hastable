@@ -26,9 +26,10 @@ tbody tr:nth-child(2n+1) {
 }
 
 #gen{
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: 2px solid green;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 20;
+    border: 5px solid green;
     background-color: rgba(0,0,0,0);
     color: green;
     padding: 15px 30px;

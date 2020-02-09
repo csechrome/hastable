@@ -1,0 +1,334 @@
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>하나고 시간표 생성기</title>
+
+	<style type="text/css">
+		.parent {
+            width: 100%;
+            font-size: 30;
+			display: flex;
+		}
+		.title {
+			flex: 1;
+			font-weight: bolder;
+			padding: 10px 5px;
+			width: 15%;
+			height: 5%;
+			margin-bottom: 1%;
+			margin-right: 5px;
+			margin-left: 5px;
+			text-align: center;
+		}
+		.child {
+            font-size: 17;
+			flex: 1;
+			border: 2px solid;
+			padding: 10px 5px;
+			width: 20%;
+			height: 5%;
+			margin-bottom: 0.2%;
+			margin-right: 5px;
+			margin-left: 5px;
+			text-align: center;
+			background-color: #97d8c2;
+        }
+        .child:hover{
+            background-color: #6ca9d1;
+	        transition: all ease 1s;
+        }
+
+        .nextButton {
+            font-weight: bold;
+            font-size: 20;
+            border: 2px solid;
+            background-color: rgb(210, 240, 161);
+            width: 100%;
+            padding: 18px 0px;
+        }
+	</style>
+</head>
+
+<body>
+    <script>
+        var n = 0;
+        var selected_sub = Array(9);
+        function colorChanger(subbox) {
+            if(n != 9) {
+                if (subbox.style.background=='rgb(108, 169, 209)') {
+                    subbox.style.background='#97d8c2';
+                    var obj = document.getElementById('nownum');
+                    obj.innerHTML = --n;
+                }
+                else{
+                    subbox.style.background='#6ca9d1';
+                    selected_sub[n++] = subbox.id;
+                    var obj = document.getElementById('nownum');
+                    obj.innerHTML = n;
+                }
+          }
+        }
+
+        function nextCheck() {
+            if (n != 9) {
+                alert("9개 과목을 모두 선택해주세요");
+            }
+            else {
+                location.href="/hastable/display.html";
+            }
+        }
+    </script>
+
+    <br>
+    <H1 align="center">
+        수강할 과목을 선택해주세요
+        (<span id="nownum">0</span> / 9)
+    </H1>
+	<div class="parent">
+		<div class="title">
+			국어
+		</div>
+		<div class="title">
+			수학
+		</div>
+		<div class="title">
+			영어
+		</div>
+		<div class="title">
+			사회
+		</div>
+		<div class="title">
+			과학
+		</div>
+	</div>
+	<div class="parent">
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+			화법과작문
+		</button>
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+			수학
+		</button>
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+            심화영어독해
+		</button>
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+			AP세계사
+		</button>
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+            화학
+		</button>
+	</div>
+	<div class="parent">
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+            고전읽기
+		</button>
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+			심화수학
+		</button>
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+			어떤 과목
+		</button>
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+			어떤 과목
+		</button>
+		<button class="child" id="고전읽기" onclick="colorChanger(this)">
+			AP물리학C:전자기학
+		</button>
+    </div>
+    <div class="parent">
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+            미적분학
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+            AP화학
+		</button>
+    </div>
+    <div class="parent">
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+    </div>
+    <div class="parent">
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+    </div>
+    <div class="parent">
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+    </div>
+    <div class="parent">
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+    </div>
+    <div class="parent">
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+	</div>
+
+	<div class="parent">
+		<div class="title">
+			제2외국어
+		</div>
+		<div class="title">
+			예술
+		</div>
+		<div class="title">
+			체육
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+	</div>
+	<div class="parent">
+		<button class="child">
+            ㅁ
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<div class="child">
+			운동과건강
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+    </div>
+    <div class="parent">
+		<button class="child">
+            ㅁ
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<div class="child">
+			운동과건강
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+    </div>
+    <div class="parent">
+		<button class="child">
+            ㅁ
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<div class="child">
+			운동과건강
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+    </div>
+    <div class="parent">
+		<button class="child">
+            ㅁ
+		</button>
+		<button class="child">
+			어떤 과목
+		</button>
+		<div class="child">
+			운동과건강
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+		<div class="title">
+			<!-- margin -->
+		</div>
+    </div>
+    
+    <div align="center">
+        <br>
+        <button class="nextButton" onclick=nextCheck()>
+            다음
+        </button>
+    </div>
+
+</body>
