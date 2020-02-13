@@ -206,12 +206,3 @@ function set(time, subName) {
         break;
     }
 }
-
-function displayTable(idx) {
-    var day = ["mon", "tue", "wed", "thu", "fri"];
-    for (var i = 0; i < 7; i++) {
-        for (var j = 0; j < 5; j++) {
-            setSub(day[j]+String(i+1), allTable[idx][i][j]);
-        }
-    }
-}

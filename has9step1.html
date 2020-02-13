@@ -1,9 +1,11 @@
 <html lang="ko">
 <head>
 	<meta charset="utf-8">
-	<title>수강신청 화이팅 :)</title>
+	<title>하나고 시간표 조합기</title>
 
 	<style type="text/css">
+		html{height:100%;}
+		body{min-height:100%; padding-bottom: 100px;}
 		.parent {
 			width: 100%;
 			font-size: 30;
@@ -25,7 +27,7 @@
 			font-size: 17;
 			padding: 10px 5px;
 			width: 20%;
-			height: 5%;
+			height: 20px;
 			margin-bottom: 0.2%;
 			margin-right: 5px;
 			margin-left: 5px;
@@ -38,7 +40,7 @@
             padding: 10px 5px;
 			border: 2px solid;
 			width: 20%;
-			height: 5%;
+			height: 50px;
 			margin-bottom: 0.2%;
 			margin-right: 5px;
 			margin-left: 5px;
@@ -51,12 +53,16 @@
 		}
 
 		.nextButton {
+			position: fixed;
+  			left: 0;
+    		bottom: 0;
+    		width: 100%;
 			font-weight: bold;
-			font-size: 20;
-			border: 2px solid;
+			font-size: 30;
+			border: 0px;
 			background-color: rgb(210, 240, 161);
 			width: 100%;
-			padding: 18px 0px;
+			padding: 30px 0;
 		}
 	</style>
 </head>
@@ -188,7 +194,7 @@
 		<button class="child" id="수학적 사고와 통계" onclick="colorChanger(this)">
 			수학적 사고와 통계
 		</button>
-		<button class="child" id="영어 비평적 읽기와 쓰기" onclick="colorChanger(this)">
+		<button class="child" id="비평적 읽기와 쓰기" onclick="colorChanger(this)">
 			비평적 읽기와 쓰기
 		</button>
 		<button class="child" id="교육학" onclick="colorChanger(this)">

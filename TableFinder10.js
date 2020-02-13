@@ -1,6 +1,6 @@
 var nowtable = 0;
 window.onload = function() {
-    var str = decodeURI(location.search.substr(1, location.search.length));
+    var str = decodeURIComponent(location.search.substr(1, location.search.length));
     //sub = str.split(',');
     history.replaceState({}, null, location.pathname);
     var n = search(0);
@@ -69,6 +69,14 @@ function search(idx) {		// DFS Search
             }
         }
 
+        for (var i = 0; i < 7; i++) {
+            for (var j = 0; j < 5; j++) {
+                if(tempTable[i][j].includes("과제연구")){
+                    tempTable[i][j] = "과제연구";
+                }
+            }
+        }
+        
         for (var i = 0; i < n; i++) {
             if (JSON.stringify(tempTable) === JSON.stringify(allTable[i])) {
                 return 0;
@@ -78,9 +86,6 @@ function search(idx) {		// DFS Search
         allTable[n] = Array.from(Array(7), () => Array());
         for (var i = 0; i < 7; i++) {
             for (var j = 0; j < 5; j++) {
-                if(tempTable[i][j].includes("과제연구")){
-                    tempTable[i][j] = "과제연구";
-                }
                 allTable[n][i][j] = tempTable[i][j];
             }
         }

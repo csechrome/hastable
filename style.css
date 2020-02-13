@@ -10,6 +10,7 @@ table {
 }
 td,
 th {
+    height: 50px;
     padding: 11px;
     text-align: center;
 }
