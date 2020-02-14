@@ -1,6 +1,6 @@
 var nowtable = 0;
 window.onload = function() {
-    var str = decodeURI(location.search.substr(1, location.search.length));
+    var str = decodeURIComponent(location.search.substr(1, location.search.length));
     sub = str.split(',');
     history.replaceState({}, null, location.pathname);
     var n = search(0);
