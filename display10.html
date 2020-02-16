@@ -9,6 +9,20 @@
     <script type="text/javascript" src="TableFinder10.js"></script>
     <link rel="stylesheet" href="style.css">
     
+    <link rel="stylesheet" href="fakeLoader.css">
+    <div class="fakeloader"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="fakeLoader.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.fakeLoader({
+                bgColor:"#1abc9c",
+                spinner:"spinner6"
+            });
+        });
+    </script>
+    <div class="fakeLoader"></div>
+
     <br><br><br><br>
     <h2 align="center"> 시간표 (<span id="nownum">1</span> / <span id="tablenum">none</span>) </h2>
 
