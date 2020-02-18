@@ -76,9 +76,19 @@ function search(idx) {		// DFS Search
             }
         }
         
-        for (var i = 0; i < n; i++) {
-            if (JSON.stringify(tempTable) === JSON.stringify(allTable[i])) {
-                return 0;
+        for(var i=0; i<n; i++){
+
+            nextLoop:
+            for(var j=0; j<7; j++){
+                for(var k=0; k<5; k++){
+                    if(allTable[i][j][k] != tempTable[j][k]){
+                        break nextLoop;
+                    }
+                }
+
+                if(j == 6){
+                    return 0;
+                }
             }
         }
         
@@ -88,8 +98,8 @@ function search(idx) {		// DFS Search
                 allTable[n][i][j] = tempTable[i][j];
             }
         }
-        
         n++;
+
         return 0;
     }
     

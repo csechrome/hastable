@@ -1,7 +1,6 @@
 var nowtable = 0;
 window.onload = function() {
     var str = decodeURIComponent(location.search.substr(1, location.search.length));
-    sub = str.split(',');
     history.replaceState({}, null, location.pathname);
     var n = search(0);
     setSub("loading", "");
@@ -33,39 +32,37 @@ window.onkeydown = function() {
     }
 }
 
-/** USE PARSING TOOL **/
-var sheetNum = [10, 10, 9, 9, 10, 8, 3, 4, 4, 4, 4, 6, 6];
+var sheetNum = [9, 9, 9, 9, 10, 9, 5, 3, 7, 7, 6, 11, 6];
 var sorted =
-[["합창","세포생물학","현대 물리학I","고급 물리학","고급 생명과학","시사영어","언어와 매체","미적분학II","비교 문화","확률과 통계"],
-["중국 언어와 문화","고급 지구과학","생명과학 실험","AP 세계사","고급 화학","융합과학 탐구","언어와 매체","사회 문화","확률과 통계","심화 영어I"],
-["AP 미적분학","일본어 회화II","AP 세계사","시사영어","고급 화학","융합과학 탐구","언어와 매체","확률과 통계","심화 영어I"],
-["국제 경제","비평적 읽기와 쓰기","고급 생명과학","심화 국어","언어와 매체","융합과학 탐구","미적분학II","비교 문화","심화 영어I"],
-["중국어 독해와 작문II","일본 언어와 문화","화학 실험","현대 물리학I","심화 국어","고급 화학","언어와 매체","미적분학II","사회 문화","심화 영어I"],
-["독서","고급 물리학","국제 경제","언어와 매체","미적분학II","비교 문화","확률과 통계","심화 영어I"],
-["언어와 매체","심화 영어I","사회 문화"],
-["매체 미술","비평적 읽기와 쓰기","고급 화학","미적분학II"],
-["심화 영어 작문I","운동과 건강","수학적 사고와 통계","교육학"],
-["고전문학 감상","운동과 건강","수학적 사고와 통계","교육학"],
-["고전문학 감상","운동과 건강","수학적 사고와 통계","고급 수학I"],
-["수학 과제연구","심화 영어 작문I","운동과 건강","수학적 사고와 통계","교육학","고급 수학I"],
-["음악사","미술사","수학적 사고와 통계","교육학","고급 수학I", "정보과학"]];
+[["영어I","윤리와 사상","생활과 과학","문학","수학I","생명과학I","AP 물리학 C: 역학","심화 미분적분학I","물리학I"],
+["AP 미시경제","AP 통계학","화학I","영미문학I","문학","수학I","생명과학I","심화 미분적분학I","기하"],
+["세계사","선형대수학","물리학I","심화 영어 독해I","문학","수학I","AP 화학I","AP 물리학 C: 역학","심화 미분적분학I"],
+["심화 영어 회화I","정치와 법","생활과 과학","영미문학I","문학","수학I","AP 화학I","심화 미분적분학I","기하"],
+["AP 미시경제","AP 생물학I","AP 통계학","물리학I","심화 영어 독해I","문학","수학I","AP 물리학 C: 역학","심화 미분적분학I","기하"],
+["정치와 법","화학I","영미문학I","심화 영어 독해I","문학","수학I","생명과학I","기하","물리학I"],
+["합창","드로잉","수학I","AP 화학I","기하"],
+["AP 생물학I","문학","수학I"],
+["퍼블릭 스피킹","생활과 윤리","문학과 매체","경제","사회과제 연구(사회)","과학과제 연구(생명과학)","과학과제 연구(물리학)"],
+["사회과제 연구(인문)","문학과 매체","과학과제 연구(수학통계)","경제","운동과 건강","사회과제 연구(사회)","과학과제 연구(물리학)"],
+["일본어 회화I","사회과제 연구(경제경영)","운동과 건강","경제","과학과제 연구(생명과학)","과학과제 연구(화학)"],
+["미술사","음악사","과학과제 연구(정보과학)","생활과 윤리","과학과제 연구(수학통계)","운동과 건강","경제","사회과제 연구(사회)","과학과제 연구(생명과학)","과학과제 연구(물리학)","과학과제 연구(화학)"],
+["AP 컴퓨터과학 A","심화 국어","운동과 건강","과학과제 연구(생명과학)","사회과제 연구(사회)","과학과제 연구(화학)"]];
 
 var n = 0;
 var subchk = Array(9).fill(false);
 var timechk = Array(13).fill(false);
 var tempTable = Array.from(Array(7), () => Array());
 var allTable = Array(500);
-var sub = Array(9);
-//var sub = ["고급 물리학", "고급 생명과학", "정보과학", "독서", "심화 영어I", "AP 미적분학", "미적분학II", "고급 수학I", "운동과 건강"];
+var sub = ["생활과 윤리", "생명과학I", "AP 물리학 C: 역학", "심화 미분적분학I", "운동과 건강", "심화 영어 독해I", "기하", "문학과 매체", "AP 컴퓨터과학 A", "과학과제 연구(정보과학)"];
 
-function search(idx) {		// DFS Search
+function search(idx) { 
 
     if (idx == 9) {
-        tempTable[6][2] = "창체"; // WED7 Always NULL
+        tempTable[6][2] = "창체"; 
 
         for (var i = 0; i < 13; i++) {
-            if (!timechk[i]) { // Which Block is NULL?
-                set(i, "공강"); // NULL to "공강"
+            if (!timechk[i]) {
+                set(i, "공강");
             }
         }
 
@@ -95,13 +92,13 @@ function search(idx) {		// DFS Search
 
         return 0;
     }
-    
-    for (var i = idx; i < 13; i++) { // Block
-        for (var j = 0; j < sheetNum[i]; j++) { // Subjects
-            for (var k = 0; k < 9; k++) { // My Subject
+
+    for (var i = idx; i < 13; i++) { 
+        tempLoop:
+        for (var j = 0; j < sheetNum[i]; j++) { 
+            for (var k = 0; k < 9; k++) { 
                 if (sorted[i][j]==(sub[k]) && !subchk[k] && !timechk[i]) {
 
-                    /** Check Subject & Block **/
                     subchk[k] = true;
                     timechk[i] = true;
                     if (i == 6) {
@@ -114,10 +111,9 @@ function search(idx) {		// DFS Search
                         timechk[7] = true;
                     }
 
-                    set(i, sub[k]); // PUSH
-                    search(idx + 1); // DFS(index + 1);
+                    set(i, sub[k]);
+                    search(idx + 1);
 
-                    /** Undo Check **/
                     subchk[k] = false;
                     timechk[i] = false;
                     if (i == 6) {
@@ -130,8 +126,8 @@ function search(idx) {		// DFS Search
                         timechk[7] = false;
                     }
 
-                    set(i, null); // POP
-                    break;
+                    set(i, null);
+                    break tempLoop;
                 }
             }
         }
@@ -144,74 +140,74 @@ function set(time, subName) {
 
     switch (time) {
 
-    /** 4A ~ 4H **/
-    case 0:
+        /** 4A ~ 4H **/
+        case 0:
         tempTable[4][0] = subName;
         tempTable[5][0] = subName;
         tempTable[2][2] = subName;
         tempTable[3][2] = subName;
         break;
-    case 1:
+        case 1:
         tempTable[6][0] = subName;
         tempTable[2][1] = subName;
         tempTable[3][1] = subName;
         tempTable[4][3] = subName;
         break;
-    case 2:
+        case 2:
         tempTable[6][1] = subName;
         tempTable[0][3] = subName;
         tempTable[1][3] = subName;
         tempTable[4][4] = subName;
         break;
-    case 3:
+        case 3:
         tempTable[4][2] = subName;
         tempTable[5][2] = subName;
         tempTable[0][4] = subName;
         tempTable[1][4] = subName;
         break;
-    case 4:
+        case 4:
         tempTable[4][1] = subName;
         tempTable[5][1] = subName;
         tempTable[2][4] = subName;
         tempTable[3][4] = subName;
         break;
-    case 5:
+        case 5:
         tempTable[0][1] = subName;
         tempTable[1][1] = subName;
         tempTable[5][4] = subName;
         tempTable[6][4] = subName;
         break;
-    case 6:
+        case 6:
         tempTable[0][0] = subName;
         tempTable[1][0] = subName;
         tempTable[2][3] = subName;
         tempTable[3][3] = subName;
         break;
-    case 7:
+        case 7:
         tempTable[2][0] = subName;
         tempTable[3][0] = subName;
         tempTable[0][2] = subName;
         tempTable[1][2] = subName;
         break;
 
-    /** 2A ~ 2E **/
-    case 8:
+        /** 2A ~ 2E **/
+        case 8:
         tempTable[2][0] = subName;
         tempTable[3][0] = subName;
         break;
-    case 9:
+        case 9:
         tempTable[0][0] = subName;
         tempTable[1][0] = subName;
         break;
-    case 10:
+        case 10:
         tempTable[0][2] = subName;
         tempTable[1][2] = subName;
         break;
-    case 11:
+        case 11:
         tempTable[5][3] = subName;
         tempTable[6][3] = subName;
         break;
-    case 12:
+        case 12:
         tempTable[3][3] = subName;
         tempTable[2][3] = subName;
         break;
