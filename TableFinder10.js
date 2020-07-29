@@ -33,6 +33,20 @@ window.onkeydown = function() {
     }
 }
 
+function leftClick() {
+    if(nowtable != 0) {
+        displayTable(--nowtable);
+        this.setSub("nownum", nowtable+1);
+    }
+}
+
+function rightClick() {
+    if(nowtable != n - 1) {
+        displayTable(++nowtable);
+        this.setSub("nownum", nowtable+1);
+    }
+}
+
 /** USE PARSING TOOL **/
 var sheetNum = [7, 8, 9, 12, 9, 7, 7, 5, 10, 7, 4, 7, 5];
 var sorted =

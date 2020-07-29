@@ -2,7 +2,7 @@ var nowtable = 0;
 window.onload = function() {
     var str = decodeURIComponent(location.search.substr(1, location.search.length));
     sub = str.split(',');
-    sub  = sub.filter(function(item) {
+    sub = sub.filter(function(item) {
         return item !== null && item !== undefined && item !== '';
     });
     history.replaceState({}, null, location.pathname);
@@ -33,6 +33,20 @@ window.onkeydown = function() {
             displayTable(++nowtable);
             this.setSub("nownum", nowtable+1);
         }
+    }
+}
+
+function leftClick() {
+    if(nowtable != 0) {
+        displayTable(--nowtable);
+        this.setSub("nownum", nowtable+1);
+    }
+}
+
+function rightClick() {
+    if(nowtable != n - 1) {
+        displayTable(++nowtable);
+        this.setSub("nownum", nowtable+1);
     }
 }
 
