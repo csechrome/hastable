@@ -2,6 +2,11 @@ var nowtable = 0;
 window.onload = function() {
     var str = decodeURIComponent(location.search.substr(1, location.search.length));
     sub = str.split(',');
+    sub  = sub.filter(function(item) {
+        return item !== null && item !== undefined && item !== '';
+    });
+      
+    console.log(sub.length);
     history.replaceState({}, null, location.pathname);
     var n = search(0);
     setSub("loading", "");
@@ -34,21 +39,21 @@ window.onkeydown = function() {
 }
 
 /** USE PARSING TOOL **/
-var sheetNum = [10, 10, 9, 9, 10, 8, 3, 4, 4, 3, 4, 6, 7];
+var sheetNum = [5, 8, 3, 7, 8, 11, 2, 11, 4, 4, 6, 5, 5];
 var sorted =
-[["합창","세포생물학","현대 물리학I","고급 물리학","고급 생명과학","시사영어","언어와 매체","미적분학II","비교 문화","확률과 통계"],
-["중국 언어와 문화","고급 지구과학","생명과학 실험","AP 세계사","고급 화학","융합과학 탐구","언어와 매체","사회 문화","확률과 통계","심화 영어I"],
-["AP 미적분학","일본어 회화II","AP 세계사","시사영어","고급 화학","융합과학 탐구","언어와 매체","확률과 통계","심화 영어I"],
-["국제 경제","비평적 읽기와 쓰기","고급 생명과학","심화 국어","언어와 매체","융합과학 탐구","미적분학II","비교 문화","심화 영어I"],
-["중국어 독해와 작문II","일본 언어와 문화","화학 실험","현대 물리학I","심화 국어","고급 화학","언어와 매체","미적분학II","사회 문화","심화 영어I"],
-["독서","고급 물리학","국제 경제","언어와 매체","미적분학II","비교 문화","확률과 통계","심화 영어I"],
-["언어와 매체","심화 영어I","사회 문화"],
-["매체 미술","비평적 읽기와 쓰기","고급 화학","미적분학II"],
-["심화 영어 작문I","운동과 건강","수학적 사고와 통계","교육학"],
-["운동과 건강","수학적 사고와 통계","교육학"],
-["고전문학 감상","운동과 건강","수학적 사고와 통계","고급 수학I"],
-["고전문학 감상","수학 과제연구","운동과 건강","수학적 사고와 통계","교육학","고급 수학I"],
-["심화 영어 작문I","음악사","미술사","수학적 사고와 통계","교육학","고급 수학I", "정보과학"]];
+[["일본어 회화II","영어 비평적 읽기와 쓰기","융합과학 탐구","고급 화학","수학연습I"],
+["생명과학 실험","국제 경제","고급 화학","고급 물리학","실용국어","심화영어II","미적분학II","비교 문화"],
+["미술 전공 실기","시사영어","고급 화학"],
+["AP 미적분학","합주","현대 물리학I","고급 생명과학","영어 비평적 읽기와 쓰기","실용국어","융합과학 탐구"],
+["고급 지구과학","중국어 회화II","현대 물리학I","심화 국어","시사영어","미적분학II","수학연습I","실용국어"],
+["화학 실험","일본어 독해와 작문II","중국어 독해와 작문II","동아시아사","국제 경제","합주","미적분학II","실용국어","비교 문화","수학연습I","심화영어II"],
+["고급 생명과학","미적분학II"],
+["세포생물학","고급 물리학","심화 국어","동아시아사","융합과학 탐구","고급 화학","실용국어","비교 문화","미적분학II","심화영어II","수학연습I"],
+["정보과학","현대문학 감상","고급 수학I","수학적 사고와 통계",],
+["사회 문화","고급 수학I","수학적 사고와 통계","운동과 건강"],
+["음악 이론","심화 영어 작문I","현대문학 감상","사회 문화","수학적 사고와 통계","운동과 건강"],
+["미술 감상과 비평","심화 영어 작문I","고급 수학I","수학적 사고와 통계","운동과 건강"],
+["수학 과제연구","현대문학 감상","사회 문화","수학적 사고와 통계","운동과 건강"]];
     
 var n = 0;
 var subchk = Array(9).fill(false);
@@ -56,11 +61,10 @@ var timechk = Array(13).fill(false);
 var tempTable = Array.from(Array(7), () => Array());
 var allTable = Array(500);
 var sub = Array(9);
-//var sub = ["고급 물리학", "고급 생명과학", "정보과학", "독서", "심화 영어I", "AP 미적분학", "미적분학II", "고급 수학I", "운동과 건강"];
 
+console.log(sub.length);
 function search(idx) {		// DFS Search
-
-    if (idx == 9) {
+    if (idx == sub.length) {
         tempTable[6][2] = "창체"; // WED7 Always NULL
 
         for (var i = 0; i < 13; i++) {
@@ -98,20 +102,20 @@ function search(idx) {		// DFS Search
     
     for (var i = idx; i < 13; i++) { // Block
         for (var j = 0; j < sheetNum[i]; j++) { // Subjects
-            for (var k = 0; k < 9; k++) { // My Subject
+            for (var k = 0; k < sub.length; k++) { // My Subject
                 if (sorted[i][j]==(sub[k]) && !subchk[k] && !timechk[i]) {
 
                     /** Check Subject & Block **/
                     subchk[k] = true;
                     timechk[i] = true;
-                    if (i == 6) {
-                        timechk[9] = timechk[12] = true;
-                    } else if (i == 7) {
-                        timechk[8] = timechk[10] = true;
-                    } else if (i == 9 || i == 12) {
+                    if (i == 2) {
+                        timechk[9] = timechk[10] = true;
+                    } else if (i == 6) {
+                        timechk[11] = timechk[12] = true;
+                    } else if (i == 9 || i == 10) {
+                        timechk[2] = true;
+                    } else if (i == 11 || i == 12) {
                         timechk[6] = true;
-                    } else if (i == 8 || i == 10) {
-                        timechk[7] = true;
                     }
 
                     set(i, sub[k]); // PUSH
@@ -120,14 +124,14 @@ function search(idx) {		// DFS Search
                     /** Undo Check **/
                     subchk[k] = false;
                     timechk[i] = false;
-                    if (i == 6) {
-                        timechk[9] = timechk[12] = false;
-                    } else if (i == 7) {
-                        timechk[8] = timechk[10] = false;
-                    } else if (!timechk[9] && !timechk[12]) {
+                    if (i == 2) {
+                        timechk[9] = timechk[10] = false;
+                    } else if (i == 6) {
+                        timechk[11] = timechk[12] = false;
+                    } else if (!timechk[9] && !timechk[10]) {
+                        timechk[2] = false;
+                    } else if (!timechk[11] && !timechk[12]) {
                         timechk[6] = false;
-                    } else if (!timechk[8] && !timechk[10]) {
-                        timechk[7] = false;
                     }
 
                     set(i, null); // POP
@@ -146,74 +150,74 @@ function set(time, subName) {
 
     /** 4A ~ 4H **/
     case 0:
-        tempTable[4][0] = subName;
-        tempTable[5][0] = subName;
-        tempTable[2][2] = subName;
-        tempTable[3][2] = subName;
-        break;
-    case 1:
-        tempTable[6][0] = subName;
         tempTable[2][1] = subName;
         tempTable[3][1] = subName;
         tempTable[4][3] = subName;
+        tempTable[6][4] = subName;
         break;
-    case 2:
+    case 1:
+        tempTable[4][0] = subName;
         tempTable[6][1] = subName;
-        tempTable[0][3] = subName;
-        tempTable[1][3] = subName;
-        tempTable[4][4] = subName;
-        break;
-    case 3:
-        tempTable[4][2] = subName;
-        tempTable[5][2] = subName;
         tempTable[0][4] = subName;
         tempTable[1][4] = subName;
         break;
-    case 4:
-        tempTable[4][1] = subName;
-        tempTable[5][1] = subName;
+    case 2:
+        tempTable[5][0] = subName;
+        tempTable[6][0] = subName;
+        tempTable[0][3] = subName;
+        tempTable[1][3] = subName;
+        break;
+    case 3:
+        tempTable[0][1] = subName;
+        tempTable[1][1] = subName;
         tempTable[2][4] = subName;
         tempTable[3][4] = subName;
         break;
-    case 5:
-        tempTable[0][1] = subName;
-        tempTable[1][1] = subName;
-        tempTable[5][4] = subName;
-        tempTable[6][4] = subName;
-        break;
-    case 6:
-        tempTable[0][0] = subName;
-        tempTable[1][0] = subName;
-        tempTable[2][3] = subName;
-        tempTable[3][3] = subName;
-        break;
-    case 7:
+    case 4:
         tempTable[2][0] = subName;
         tempTable[3][0] = subName;
+        tempTable[4][2] = subName;
+        tempTable[5][2] = subName;
+        break;
+    case 5:
+        tempTable[4][1] = subName;
+        tempTable[5][1] = subName;
+        tempTable[5][3] = subName;
+        tempTable[6][3] = subName;
+        break;
+    case 6:
         tempTable[0][2] = subName;
         tempTable[1][2] = subName;
+        tempTable[4][4] = subName;
+        tempTable[5][4] = subName;
+        break;
+    case 7:
+        tempTable[0][0] = subName;
+        tempTable[1][0] = subName;
+        tempTable[2][2] = subName;
+        tempTable[3][2] = subName;
         break;
 
     /** 2A ~ 2E **/
     case 8:
-        tempTable[2][0] = subName;
-        tempTable[3][0] = subName;
+        tempTable[2][3] = subName;
+        tempTable[3][3] = subName;
         break;
     case 9:
-        tempTable[0][0] = subName;
-        tempTable[1][0] = subName;
+        tempTable[5][0] = subName;
+        tempTable[6][0] = subName;
         break;
     case 10:
+        tempTable[0][3] = subName;
+        tempTable[1][3] = subName;
+        break;
+    case 11:
         tempTable[0][2] = subName;
         tempTable[1][2] = subName;
         break;
-    case 11:
-        tempTable[5][3] = subName;
-        tempTable[6][3] = subName;
-        break;
     case 12:
-        tempTable[3][3] = subName;
-        tempTable[2][3] = subName;
+        tempTable[4][4] = subName;
+        tempTable[5][4] = subName;
         break;
     }
 }

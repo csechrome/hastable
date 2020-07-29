@@ -88,19 +88,22 @@
 		}
 
 		function nextCheck() {
-			if (n != 9) {
+
+			/** 3-2 공강 8단위 고려할 것 **/
+
+			/* if (n != 9) {
 				alert("9개 과목을 모두 선택해주세요");
 			}
-			else {
-				location.href="/hastable/display9.html?" + encodeURIComponent(selected_sub);
-			}
+			else { location.href=... }
+			*/
+			location.href="/hastable/display9.html?" + encodeURIComponent(selected_sub);
 		}
 	</script>
 
 	<br>
 	<H1 align="center">
 		수강할 과목을 선택해주세요
-		(<span id="nownum">0</span> / 9)
+		(<span id="nownum">0</span>)
 	</H1>
 	<div class="parent">
 		<div class="title">
@@ -120,31 +123,31 @@
 		</div>
 	</div>
 	<div class="parent">
-		<button class="child" id="언어와 매체" onclick="colorChanger(this)">
-			언어와 매체
+		<button class="child" id="현대문학 감상" onclick="colorChanger(this)">
+            현대문학 감상
 		</button>
-		<button class="child" id="확률과 통계" onclick="colorChanger(this)">
-			확률과 통계
+		<button class="child" id="수학연습I" onclick="colorChanger(this)">
+			수학연습I
 		</button>
-		<button class="child" id="비평적 읽기와 쓰기" onclick="colorChanger(this)">
+		<button class="child" id="영어 비평적 읽기와 쓰기" onclick="colorChanger(this)">
 			비평적 읽기와 쓰기
 		</button>
-        <button class="child" id="AP 세계사" onclick="colorChanger(this)">
-            AP 세계사
+        <button class="child" id="동아시아사" onclick="colorChanger(this)">
+            동아시아사
 		</button>
 		<button class="child" id="융합과학 탐구" onclick="colorChanger(this)">
 			융합과학 탐구
 		</button>
 	</div>
 	<div class="parent">
-		<button class="child" id="독서" onclick="colorChanger(this)">
-			독서
+		<button class="child" id="실용국어" onclick="colorChanger(this)">
+			실용국어
 		</button>
 		<button class="child" id="수학 과제연구" onclick="colorChanger(this)">
 			수학 과제연구
 		</button>
-		<button class="child" id="심화 영어I" onclick="colorChanger(this)">
-			심화 영어I
+		<button class="child" id="심화영어II" onclick="colorChanger(this)">
+			심화영어II
 		</button>
 		<button class="child" id="사회 문화" onclick="colorChanger(this)">
 			사회 문화
@@ -171,9 +174,9 @@
 		</button>
 	</div>
 	<div class="parent">
-		<button class="child" id="고전문학 감상" onclick="colorChanger(this)">
-            고전문학 감상
-		</button>
+		<div class="blank">
+			
+		</div>
 		<button class="child" id="수학적 사고와 통계" onclick="colorChanger(this)">
 			수학적 사고와 통계
 		</button>
@@ -197,9 +200,9 @@
 		<div class="blank">
 			
 		</div>
-		<button class="child" id="교육학" onclick="colorChanger(this)">
-			교육학
-		</button>
+		<div class="blank">
+			
+		</div>
 		<button class="child" id="세포생물학" onclick="colorChanger(this)">
 			세포생물학
 		</button>
@@ -308,11 +311,11 @@
 		</div>
 	</div>
 	<div class="parent">
-		<button class="child" id="중국 언어와 문화" onclick="colorChanger(this)">
-			중국 언어와 문화
+		<button class="child" id="일본어 회화II" onclick="colorChanger(this)">
+			일본어 회화II
 		</button>
-		<button class="child" id="음악사" onclick="colorChanger(this)">
-			음악사
+		<button class="child" id="음악 이론" onclick="colorChanger(this)">
+			음악 이론
 		</button>
 		<button class="child" id="운동과 건강" onclick="colorChanger(this)">
 			운동과 건강
@@ -325,11 +328,11 @@
 		</div>
 	</div>
 	<div class="parent">
-		<button class="child" id="일본 언어와 문화" onclick="colorChanger(this)">
-			일본 언어와 문화
+		<button class="child" id="중국어 회화II" onclick="colorChanger(this)">
+			중국어 회화II
 		</button>
-		<button class="child" id="미술사" onclick="colorChanger(this)">
-			미술사
+		<button class="child" id="미술 전공 실기" onclick="colorChanger(this)">
+			미술 전공 실기
 		</button>
 		<div class="blank">
 
@@ -342,11 +345,11 @@
 		</div>
 	</div>
 	<div class="parent">
-		<button class="child" id="일본어 회화II" onclick="colorChanger(this)">
-            일본어 회화II
+		<button class="child" id="일본어 독해와 작문II" onclick="colorChanger(this)">
+            일본어 독해와 작문II
 		</button>
-		<button class="child" id="합창" onclick="colorChanger(this)">
-            합창
+		<button class="child" id="합주" onclick="colorChanger(this)">
+            합주
 		</button>
 		<div class="blank">
 
@@ -362,8 +365,8 @@
 		<button class="child" id="중국어 독해와 작문II" onclick="colorChanger(this)">
 			중국어 독해와 작문II
 		</button>
-		<button class="child" id="매체 미술" onclick="colorChanger(this)">
-			매체 미술
+		<button class="child" id="미술 감상과 비평" onclick="colorChanger(this)">
+			미술 감상과 비평
 		</button>
 		<div class="blank">
             
