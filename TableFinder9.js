@@ -5,8 +5,6 @@ window.onload = function() {
     sub  = sub.filter(function(item) {
         return item !== null && item !== undefined && item !== '';
     });
-      
-    console.log(sub.length);
     history.replaceState({}, null, location.pathname);
     var n = search(0);
     setSub("loading", "");
@@ -62,7 +60,6 @@ var tempTable = Array.from(Array(7), () => Array());
 var allTable = Array(500);
 var sub = Array(9);
 
-console.log(sub.length);
 function search(idx) {		// DFS Search
     if (idx == sub.length) {
         tempTable[6][2] = "창체"; // WED7 Always NULL

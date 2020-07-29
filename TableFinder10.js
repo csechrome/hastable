@@ -7,7 +7,6 @@ window.onload = function() {
     setSub("loading", "");
     setSub("tablenum", n);
     displayTable(nowtable);
-    console.log(sub);
 }
 
 function setSub(block_id, block_html) {
