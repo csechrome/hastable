@@ -89,14 +89,14 @@
 
 		function nextCheck() {
 
-			/** 3-2 공강 8단위 고려할 것 **/
+			/** 3-2학기는 공강 8단위까지 허용 **/
 
-			/* if (n != 9) {
+			if (n != 9) {
 				alert("9개 과목을 모두 선택해주세요");
 			}
-			else { location.href=... }
-			*/
-			location.href="/hastable/display9.html?" + encodeURIComponent(selected_sub);
+			else {
+				location.href="/hastable/display3.html?" + encodeURIComponent(selected_sub);
+			}
 		}
 	</script>
 

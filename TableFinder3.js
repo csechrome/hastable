@@ -51,7 +51,6 @@ function rightClick() {
 }
 
 /** USE PARSING TOOL **/
-var sheetNum = [5, 8, 3, 7, 8, 11, 2, 11, 4, 4, 6, 5, 5];
 var sorted =
 [["일본어 회화II","영어 비평적 읽기와 쓰기","융합과학 탐구","고급 화학","수학연습I"],
 ["생명과학 실험","국제 경제","고급 화학","고급 물리학","실용국어","심화영어II","미적분학II","비교 문화"],
@@ -66,7 +65,8 @@ var sorted =
 ["음악 이론","심화 영어 작문I","현대문학 감상","사회 문화","수학적 사고와 통계","운동과 건강"],
 ["미술 감상과 비평","심화 영어 작문I","고급 수학I","수학적 사고와 통계","운동과 건강"],
 ["수학 과제연구","현대문학 감상","사회 문화","수학적 사고와 통계","운동과 건강"]];
-    
+/** USE PARSING TOOL **/
+
 var n = 0;
 var subchk = Array(9).fill(false);
 var timechk = Array(13).fill(false);
@@ -112,7 +112,7 @@ function search(idx) {		// DFS Search
     }
     
     for (var i = idx; i < 13; i++) { // Block
-        for (var j = 0; j < sheetNum[i]; j++) { // Subjects
+        for (var j = 0; j < sorted[i].length; j++) { // Subjects
             for (var k = 0; k < sub.length; k++) { // My Subject
                 if (sorted[i][j]==(sub[k]) && !subchk[k] && !timechk[i]) {
 

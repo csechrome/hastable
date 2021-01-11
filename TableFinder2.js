@@ -48,7 +48,6 @@ function rightClick() {
 }
 
 /** USE PARSING TOOL **/
-var sheetNum = [7, 8, 9, 12, 9, 7, 7, 5, 10, 7, 4, 7, 5];
 var sorted =
 [["AP 세계사","생명과학II","AP 물리학","화법과 작문","수학II","언어와 매체","심화 영어 독해II"],
 ["선형대수학","수학II","심화 영어 독해II","화법과 작문","지구과학I","언어와 매체","국제 정치","AP 화학II"],
@@ -63,6 +62,7 @@ var sorted =
 ["과학 과제연구(정보과학)","심리학","과학 과제연구(화학)","사회 과제연구"],
 ["심화 국어","입체 조형","생활과 윤리","경제","운동과 건강","과학 과제연구(생명과학)","사회 과제연구"],
 ["AP 컴퓨터과학 A","경제","운동과 건강","과학 과제연구(물리학)","과학 과제연구(생명과학)"]];
+/** USE PARSING TOOL **/
 
 var n = 0;
 var subchk = Array(10).fill(false);
@@ -71,13 +71,13 @@ var tempTable = Array.from(Array(7), () => Array());
 var allTable = Array(500);
 var sub = Array(10);
 
-function search(idx) {		// DFS Search
+function search(idx) {
     if (idx == 10) {
         tempTable[6][2] = "창체"; // WED7 Always NULL
 
         for (var i = 0; i < 13; i++) {
-            if (!timechk[i]) { // Which Block is NULL?
-                set(i, "공강"); // NULL to "공강"
+            if (!timechk[i]) {
+                set(i, "공강"); // NULL --> "공강"
             }
         }
 
@@ -117,7 +117,7 @@ function search(idx) {		// DFS Search
     }
     
     for (var i = idx; i < 13; i++) { // Block
-        for (var j = 0; j < sheetNum[i]; j++) { // Subjects
+        for (var j = 0; j < sorted[i].length; j++) { // Subjects
             for (var k = 0; k < 10; k++) { // My Subject
                 if (sorted[i][j]==(sub[k]) && !subchk[k] && !timechk[i]) {
 
